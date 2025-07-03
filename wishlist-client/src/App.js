@@ -1,18 +1,48 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useLocation, Navigate } from 'react-router-dom';
 import LoginPage from './pages/LoginPage';
 import HomePage from './pages/HomePage';
 import WishlistPage from './pages/WishlistPage';
 import Header from './components/Header';
 
+const ProtectedRoute = ({ children }) => {
+  const isLoggedIn = localStorage.getItem('userEmail');
+  return isLoggedIn ? children : <Navigate to="/" />;
+};
+
+const AppLayout = () => {
+  const location = useLocation();
+  const hideHeader = location.pathname === '/';
+
+  return (
+    <>
+      {!hideHeader && <Header />}
+      <Routes>
+        <Route path="/" element={<LoginPage />} />
+        <Route
+          path="/home"
+          element={
+            <ProtectedRoute>
+              <HomePage />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/wishlist/:id"
+          element={
+            <ProtectedRoute>
+              <WishlistPage />
+            </ProtectedRoute>
+          }
+        />
+      </Routes>
+    </>
+  );
+};
+
 function App() {
   return (
     <Router>
-      <Header />
-      <Routes>
-        <Route path="/" element={<LoginPage />} />
-        <Route path="/home" element={<HomePage />} />
-        <Route path="/wishlist/:id" element={<WishlistPage />} />
-      </Routes>
+      <AppLayout />
     </Router>
   );
 }

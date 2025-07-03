@@ -48,3 +48,30 @@ exports.updateProduct = async (req, res) => {
   );
   res.json(updated);
 };
+
+
+// PUT /api/wishlists/:id
+exports.renameWishlist = async (req, res) => {
+  try {
+    const updated = await Wishlist.findByIdAndUpdate(
+      req.params.id,
+      { name: req.body.name },
+      { new: true }
+    );
+    res.json(updated);
+  } catch (err) {
+    res.status(500).json({ error: 'Failed to rename wishlist' });
+  }
+};
+
+// DELETE /api/wishlists/:id
+exports.deleteWishlist = async (req, res) => {
+  try {
+    await Wishlist.findByIdAndDelete(req.params.id);
+    await Product.deleteMany({ wishlistId: req.params.id }); // also clean related products
+    res.json({ message: 'Wishlist deleted' });
+  } catch (err) {
+    res.status(500).json({ error: 'Failed to delete wishlist' });
+  }
+};
+
