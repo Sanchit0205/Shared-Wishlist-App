@@ -12,7 +12,7 @@ const Header = () => {
   const username = localStorage.getItem('username');
 
   return (
-    <header className="fixed top-4 left-1/2 transform -translate-x-1/2 w-[95%] bg-[#f9a03f] text-white py-4 px-6 shadow-lg rounded-xl z-50 transition-all duration-300">
+    <header className="fixed top-4 left-1/2 transform -translate-x-1/2 w-[95%] bg-[#f88b3c] text-white py-4 px-6 shadow-lg rounded-xl z-50 transition-all duration-300">
       <div className="flex justify-between items-center max-w-screen-xl mx-auto">
         {/* Brand Logo */}
         <h1 className="text-2xl font-bold flex items-center gap-2 tracking-tight">

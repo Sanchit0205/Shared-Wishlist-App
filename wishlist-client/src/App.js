@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Routes, Route, useLocation, Navigate } from 'react-router-dom';
 import LoginPage from './pages/LoginPage';
-import HomePage from './pages/HomePage';
 import WishlistPage from './pages/WishlistPage';
+import ProductPage from './pages/ProductPage';
 import Header from './components/Header';
 
 const ProtectedRoute = ({ children }) => {
@@ -18,22 +18,8 @@ const AppLayout = () => {
       {!hideHeader && <Header />}
       <Routes>
         <Route path="/" element={<LoginPage />} />
-        <Route
-          path="/home"
-          element={
-            <ProtectedRoute>
-              <HomePage />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/wishlist/:id"
-          element={
-            <ProtectedRoute>
-              <WishlistPage />
-            </ProtectedRoute>
-          }
-        />
+        <Route path="/home" element={<WishlistPage />} />       
+        <Route path="/wishlist/:id" element={<ProductPage />} /> 
       </Routes>
     </>
   );

@@ -26,15 +26,16 @@ const LoginPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#e9f7ca] flex justify-center items-center px-4">
+    <div className="min-h-screen bg-[#fbc89f] flex justify-center items-center px-4">
       <div
         id="login-card"
-        className="bg-white rounded-3xl shadow-xl flex flex-col md:flex-row overflow-hidden max-w-5xl w-full opacity-0 transition-opacity duration-700"
-      >
+        className="bg-white rounded-3xl shadow-xl flex flex-col md:flex-row overflow-hidden max-w-5xl w-full opacity-0 transition-opacity duration-700 
+             transform transition-transform duration-500 hover:scale-[1.06] hover:-rotate-1 hover:shadow-2xl"
+>
         {/* Left Panel */}
         <div className="md:w-1/2 bg-white flex flex-col justify-center items-center p-8">
           <div className="mb-6 text-center">
-            <h1 className="text-3xl font-extrabold text-[#f9a03f] mb-2">
+            <h1 className="text-4xl font-extrabold text-[#f9a03f] mb-2">
               Wishlist App
             </h1>
             <p className="text-[#ceb5a7] text-sm max-w-xs mx-auto leading-relaxed">
@@ -44,7 +45,7 @@ const LoginPage = () => {
           <img
             src={illustration}
             alt="Login Illustration"
-            className="w-4/5 rounded-lg shadow-md"
+            className="w-4/5 rounded-lg hidden md:block"
           />
         </div>
 
@@ -67,17 +68,30 @@ const LoginPage = () => {
               />
             </div>
 
-            <div className="mb-4">
-              <label className="block text-[#ceb5a7] text-sm mb-1">Email</label>
-              <input
-                type="email"
-                placeholder="e.g. sanchit@example.com"
-                value={email}
-                required
-                onChange={(e) => setEmail(e.target.value)}
-                className="w-full px-4 py-3 border border-[#ceb5a7] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#f9a03f]"
-              />
-            </div>
+            <div className="mb-4 relative">
+            <label className="block text-[#ceb5a7] text-sm mb-1">Email</label>
+            <input
+              type="email"
+              placeholder="e.g. sanchit@gmail.com"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              onBlur={() => {
+                // Auto-complete only if @ not included
+                if (email && !email.includes('@')) {
+                  setEmail(email + '@gmail.com');
+                }
+              }}
+              className="w-full px-4 py-3 border border-[#ceb5a7] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#f9a03f] pr-28"
+            />
+
+            {/* Suggestion hint only when @ is not typed */}
+            {!email.includes('@') && email && (
+              <span className="absolute right-4 top-[70%] transform -translate-y-1/2 text-gray-400 text-sm pointer-events-none">
+                @gmail.com
+              </span>
+            )}
+          </div>
+
 
             <button
               type="submit"
