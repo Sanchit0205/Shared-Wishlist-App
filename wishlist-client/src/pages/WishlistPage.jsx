@@ -8,7 +8,7 @@ const WishlistPage = () => {
   const navigate = useNavigate();
   const userEmail = localStorage.getItem('userEmail');
   const username = localStorage.getItem('username') || 'User';
-  const [wishlistName, setWishlistName] = useState(`${username}'s Wishlist`);
+//   const [wishlistName, setWishlistName] = useState(`${username}'s Wishlist`);
   const [products, setProducts] = useState([]);
   const [newProduct, setNewProduct] = useState({
     name: '',
@@ -18,13 +18,14 @@ const WishlistPage = () => {
   const [inviteEmail, setInviteEmail] = useState('');
   const [invitedEmails, setInvitedEmails] = useState([]);
 
-  useEffect(() => {
-    if (!userEmail) {
-      navigate('/');
-    } else {
-      fetchProducts();
-    }
-  }, []);
+useEffect(() => {
+  if (!userEmail) {
+    navigate('/');
+  } else {
+    fetchProducts();
+  }
+}, [userEmail, navigate]);
+
 
   const fetchProducts = async () => {
     try {
