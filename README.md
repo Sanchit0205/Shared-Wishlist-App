@@ -14,10 +14,13 @@ A full-stack collaborative wishlist application where users can create and share
 
 ## 📸 Screenshots
 
-<img src="screenshots/login-page.png" width="600"/>
-<img src="screenshots/wishlist.png" width="600"/>
-<img src="screenshots/product.png" width="600"/>
-<img src="screenshots/comments.png" width="600"/>
+<img src="screenshots/login-page.png" width="100%"/>
+<img src="screenshots/wishlist.png" width="100%"/>
+<img src="screenshots/product.png" width="100%"/>
+<div style="display: flex; gap: 10px;">
+  <img src="screenshots/comments.png" width="49%"/>
+  <img src="screenshots/invite.png" width="49%"/>
+</div>
 
 ---
 
