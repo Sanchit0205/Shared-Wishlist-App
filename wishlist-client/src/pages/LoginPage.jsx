@@ -74,11 +74,10 @@ const LoginPage = () => {
               type="email"
               placeholder="e.g. sanchit@gmail.com"
               value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              onChange={(e) => setEmail(e.target.value.toLowerCase())}
               onBlur={() => {
-                // Auto-complete only if @ not included
                 if (email && !email.includes('@')) {
-                  setEmail(email + '@gmail.com');
+                  setEmail((email + '@gmail.com').toLowerCase()); 
                 }
               }}
               className="w-full px-4 py-3 border border-[#ceb5a7] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#f9a03f] pr-28"
