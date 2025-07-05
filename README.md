@@ -19,7 +19,7 @@ A full-stack collaborative wishlist application where users can create and share
 <img src="screenshots/product.png" width="100%"/>
 <div style="display: flex; gap: 10px;">
   <img src="screenshots/comments.png" width="49%"/>
-  <img src="screenshots/invite.png" width="49%"/>
+  <img src="screenshots/Invite.png" width="49%"/>
 </div>
 
 ---
